@@ -44,9 +44,9 @@ async def on_guild_join(guild):
     Servers.add_server(servers_db, guild)
     embed = Embed(
         title=f'Hello {guild.name}!',
-        description="""I will only work on channels where `?allow` were used by an admin. To further stop me from working on a channel use `?deny`!
-        
-        Use `?help` to get used to me and have fun!""",
+        description="""I'm only able to work on channels where ?allow has been used by an admin. If you wish to stop me from working on a channel use ?deny!
+
+Use ?help in order to acquaint yourself with my features and have fun!""",
         color=TRINITY_COLOR
     )
 

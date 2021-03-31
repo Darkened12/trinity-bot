@@ -78,6 +78,8 @@ async def execute(db, game_id, ctx, args, lang='en-us'):
 
             def add_embed_fields(emb, name, value):
                 if value not in ['-', None]:
+                    if 'P1' in value and '-' in value:
+                        return
                     if 'P1' not in value:
                         value = value.replace('*', '\\*')
                     emb.add_field(name=name, value=value)
