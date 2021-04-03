@@ -25,7 +25,7 @@ async def execute(db, game_id, ctx, args, lang='en-us'):
         if ' ' not in args.lower():
             embed = Embed(
                 title=character.name,
-                description=character.notes.replace('*', '\\*') if character.notes != '-' else None,
+                description=character.notes.replace('*', '\\*') if character.notes not in ['-', None] else None,
                 colour=int(character.color, 0)
             )
             if character.health != '-':
