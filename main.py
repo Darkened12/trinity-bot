@@ -123,11 +123,15 @@ async def help(ctx):
 
 @bot.command()
 async def cf(ctx, *, args):
-    return await character.execute(postgres, 1, ctx, args, lang='en-us')
+    server = Servers(db_obj=servers_db, guild_discord_obj=ctx.guild)
+    if server.is_channel_allowed(ctx.channel.id):
+        return await character.execute(postgres, 1, ctx, args, lang='en-us')
 
 @bot.command()
 async def tag(ctx, *, args):
-    return await character.execute(postgres, 2, ctx, args, lang='en-us')
+    server = Servers(db_obj=servers_db, guild_discord_obj=ctx.guild)
+    if server.is_channel_allowed(ctx.channel.id):
+        return await character.execute(postgres, 2, ctx, args, lang='en-us')
 
 @bot.command()
 @has_guild_permissions(administrator=True)
