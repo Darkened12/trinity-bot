@@ -16,8 +16,8 @@ if sys.version_info[0] == 3 and sys.version_info[1] >= 8 and sys.platform.starts
 
 TRINITY_COLOR = 0xfedbb6
 TRINITY_TOKEN: str = ''  # bot token here
-ALLOWED_CHANNEL_ID = 965022076702425109  # where frame data can be edited
-LOGGING_CHANNEL = 728013555722485841  # where frame data edits will be logged
+ALLOWED_CHANNEL_ID: int = 000000000000000000  # where frame data can be edited
+LOGGING_CHANNEL_ID: int = 000000000000000000  # where frame data edits will be logged
 
 postgres = psql.Database()
 
@@ -115,7 +115,7 @@ async def on_ready():
 
     print('Trinity: Initializing...')
 
-    logger = ChannelLogging(LOGGING_CHANNEL, bot)
+    logger = ChannelLogging(LOGGING_CHANNEL_ID, bot)
     await postgres.init()
     await update_character_and_move_names()
     await bot.change_presence(activity=Game(name="/help"))
