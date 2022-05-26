@@ -6,7 +6,7 @@ from sqlalchemy.orm import sessionmaker
 class Database:
     Base = None
 
-    def __init__(self, dsn="heroku", new_database=False):
+    def __init__(self, dsn="", new_database=False):
         self.dsn_connector = 'postgresql+asyncpg://'
         if dsn == 'heroku':
             self.dsn = self.dsn_connector + os.environ['DATABASE_URL'].replace('postgres://', '')
@@ -20,7 +20,6 @@ class Database:
         return self.init().__await__()
 
     async def init(self):
-        print(self.dsn)
         self.engine = await self._get_engine()
         self.session = await self._get_session()
         return self
