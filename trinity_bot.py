@@ -141,7 +141,6 @@ async def on_ready():
 
 @bot.slash_command(description="Opens up the game selection menu")
 async def game(ctx: ApplicationContext):
-    await ctx.defer()
     view = GameSelectionView(
         database=postgres,
         cf_character_names=cf_character_names,
@@ -158,7 +157,6 @@ async def character(ctx: ApplicationContext,
                     game_name: Option(str, "Enter the game prefix", autocomplete=autocomplete_game),
                     character_name: Option(str, "Enter the character name", autocomplete=autocomplete_character_names),
                     ):
-    await ctx.defer()
     try:
         game_id = get_game_id(game_name)
         character_ = Character(database=postgres, name=character_name, game_id=game_id,
@@ -174,7 +172,6 @@ async def character(ctx: ApplicationContext,
 
 
 async def get_move(ctx: ApplicationContext, character_name: str, move_name: str, game_id: int):
-    await ctx.defer()
     try:
         character_ = Character(database=postgres, name=character_name, game_id=game_id,
                                is_changed_allowed=ctx.channel_id == ALLOWED_CHANNEL_ID)
@@ -206,7 +203,6 @@ async def tag(ctx: ApplicationContext,
 
 @bot.slash_command(description="Teaches you how to use slash commands")
 async def help(ctx: ApplicationContext):
-    await ctx.defer(ephemeral=True)
     embed = Embed(description='When you type a "/" (slash) you will see a slash command menu appears. Click on my '
                               'profile picture and you will see all available commands and their descriptions!',
                   color=TRINITY_COLOR)
