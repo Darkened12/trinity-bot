@@ -1,5 +1,6 @@
 import sys
 import asyncio
+import tools
 from discord import Embed, Game, Bot, Option, AutocompleteContext, ApplicationContext
 from database.psql import psql
 from database.channel_logging import ChannelLogging
@@ -65,18 +66,27 @@ def autocomplete_parser(items_: list) -> list:
 
 async def autocomplete_game(ctx: AutocompleteContext) -> list:
     if ctx.value:
-        match = await string_match_list(ctx.value, games_names)
-        return autocomplete_parser(match)
+        if type(ctx.value) is str:
+            match = await string_match_list(ctx.value, games_names)
+            return autocomplete_parser(match)
+        else:
+            return []
     return autocomplete_parser(games_names)
 
 
 async def autocomplete_move_names(ctx: AutocompleteContext) -> list:
+    if type(ctx.value) is not str:
+        return []
+
     game_id = get_game_id_in_ctx(ctx)
     character_name = ctx.options['character_name']
 
     if game_id == 1:
         if character_name not in cf_character_names:
-            character_name = await string_match(character_name, cf_character_names)
+            try:
+                character_name = await string_match(character_name, cf_character_names)
+            except tools.StringNotFoundError:
+                return []
 
         if not ctx.value:
             return autocomplete_parser(cf_move_names[character_name])
@@ -86,7 +96,10 @@ async def autocomplete_move_names(ctx: AutocompleteContext) -> list:
 
     elif game_id == 2:
         if character_name not in tag_character_names:
-            character_name = await string_match(character_name, tag_character_names)
+            try:
+                character_name = await string_match(character_name, tag_character_names)
+            except tools.StringNotFoundError:
+                return []
 
         if not ctx.value:
             return autocomplete_parser(tag_move_names[character_name])
@@ -96,6 +109,9 @@ async def autocomplete_move_names(ctx: AutocompleteContext) -> list:
 
 
 async def autocomplete_character_names(ctx: AutocompleteContext) -> list:
+    if type(ctx.value) is not str:
+        return []
+
     game_id = get_game_id_in_ctx(ctx)
     if game_id == 1:
         if not ctx.value:
