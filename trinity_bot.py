@@ -81,6 +81,9 @@ async def autocomplete_move_names(ctx: AutocompleteContext) -> list:
     game_id = get_game_id_in_ctx(ctx)
     character_name = ctx.options['character_name']
 
+    if type(character_name) is not str:
+        return []
+
     if game_id == 1:
         if character_name not in cf_character_names:
             try:
