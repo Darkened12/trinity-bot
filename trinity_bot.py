@@ -60,7 +60,9 @@ def get_game_id_in_ctx(ctx: AutocompleteContext) -> int:
 
 def autocomplete_parser(items_: list) -> list:
     if len(items_) >= 25:
-        items_[24] = 'and more... just start typing!'
+        result = items_.copy()
+        result[24] = 'and more... just start typing!'
+        return result
     return items_
 
 
