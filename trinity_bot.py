@@ -199,7 +199,7 @@ async def cf(ctx: ApplicationContext,
     return await get_move(ctx, character_name, move_name, 1)
 
 
-@bot.slash_command(description="Shows information about a BlazBlue Centralfiction character's move")
+@bot.slash_command(description="Shows information about a BlazBlue Cross Tag Battle character's move")
 async def tag(ctx: ApplicationContext,
               character_name: Option(str, "Enter the character name", autocomplete=autocomplete_character_names),
               move_name: Option(str, "Enter the move name", autocomplete=autocomplete_move_names)):
