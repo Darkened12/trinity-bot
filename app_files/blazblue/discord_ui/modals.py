@@ -128,7 +128,7 @@ class MoveModal(Modal, FrameDataUpdate):
 
     def add_move_input_text(self):
         self.add_item(InputText(style=InputTextStyle.paragraph, label=self.attr.title().replace('_', ''),
-                                placeholder=self.move[self.attr], min_length=0, max_length=50, value='',
+                                placeholder=self.move[self.attr], min_length=0, max_length=200, value='',
                                 required=True))
 
     def add_notes_input_text(self):
