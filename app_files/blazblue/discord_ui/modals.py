@@ -134,12 +134,12 @@ class MoveModal(Modal, FrameDataUpdate):
 
     def add_move_input_text(self):
         self.add_item(InputText(style=InputTextStyle.paragraph, label=self.attr.title().replace('_', ''),
-                                placeholder=placeholder_parser(self.move[self.attr]), min_length=0, max_length=200, value='',
+                                placeholder=placeholder_parser(self.move[self.attr]), min_length=0, max_length=2000, value='',
                                 required=True))
 
     def add_notes_input_text(self):
         self.add_item(InputText(style=InputTextStyle.short, custom_id='change_note', label='Change Reason',
-                                placeholder='Not obligatory', min_length=0, max_length=2000, value='',
+                                placeholder='Not obligatory', min_length=0, max_length=200, value='',
                                 required=False))
 
     async def callback(self, interaction: Interaction):
