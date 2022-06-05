@@ -13,6 +13,12 @@ from app_files.blazblue.character import Character
 from conn.connection import get_request
 
 
+def placeholder_parser(placeholder: str) -> str:
+    if len(placeholder) > 100:
+        return placeholder[:97] + '...'
+    return placeholder
+
+
 class FrameDataUpdate:
     def __init__(self, move: MoveModel, character: Character, author: User):
         self.move = move
@@ -55,17 +61,17 @@ class CharacterModal(Modal):
         self.character = character
 
         self.add_item(InputText(style=InputTextStyle.short, custom_id='health', label='Health',
-                                placeholder=character.data.health, min_length=4, max_length=5, value='',
+                                placeholder=placeholder_parser(character.data.health), min_length=4, max_length=5, value='',
                                 required=False))
         self.add_item(InputText(style=InputTextStyle.short, custom_id='jump_startup', label='Jump Startup',
-                                placeholder=character.data.jump_startup, min_length=1, max_length=2, value='',
+                                placeholder=placeholder_parser(character.data.jump_startup), min_length=1, max_length=2, value='',
                                 required=False))
         if self.character.game_id == 1:
             self.add_item(InputText(style=InputTextStyle.short, custom_id='combo_rate', label='Combo Rate',
                                     placeholder=character.data.combo_rate, min_length=3, max_length=3, value='',
                                     required=False))
         self.add_item(InputText(style=InputTextStyle.paragraph, custom_id='dash', label='Dash',
-                                placeholder=character.data.dash, min_length=0, max_length=100, value='',
+                                placeholder=placeholder_parser(character.data.dash), min_length=0, max_length=100, value='',
                                 required=False))
 
         self.add_item(InputText(style=InputTextStyle.short, custom_id='change_note', label='Change Reason',
@@ -128,12 +134,12 @@ class MoveModal(Modal, FrameDataUpdate):
 
     def add_move_input_text(self):
         self.add_item(InputText(style=InputTextStyle.paragraph, label=self.attr.title().replace('_', ''),
-                                placeholder=self.move[self.attr], min_length=0, max_length=200, value='',
+                                placeholder=placeholder_parser(self.move[self.attr]), min_length=0, max_length=200, value='',
                                 required=True))
 
     def add_notes_input_text(self):
         self.add_item(InputText(style=InputTextStyle.short, custom_id='change_note', label='Change Reason',
-                                placeholder='Not obligatory', min_length=0, max_length=100, value='',
+                                placeholder='Not obligatory', min_length=0, max_length=2000, value='',
                                 required=False))
 
     async def callback(self, interaction: Interaction):
