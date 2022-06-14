@@ -14,6 +14,8 @@ from conn.connection import get_request
 
 
 def placeholder_parser(placeholder: str) -> str:
+    if placeholder is None:
+        return '-'
     if len(placeholder) > 100:
         return placeholder[:97] + '...'
     return placeholder
