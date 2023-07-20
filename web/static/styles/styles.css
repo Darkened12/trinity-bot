@@ -1,0 +1,40 @@
+span {
+    color: white;
+    background-color: rgb(87, 86, 86);
+}
+
+.vertical-navbar {
+    height: 200px; 
+    max-width: 250px;
+}
+
+.vr {
+    transform: rotate(90);
+    height: auto;
+}
+
+@media only screen and (max-width: 1010px) {
+    .vertical-navbar {
+        max-width: 200px;
+    }
+}
+
+@media only screen and (max-width: 788px) {
+    .vertical-navbar {
+        max-width: 150px;
+    }
+}
+
+.header-img {
+    width: 50%;
+    height: 50%;
+}
+
+.navbar-brand {
+    width: 35%;
+    height: 35%;
+}
+
+.navbar-color {
+    background-color: rgb(184, 182, 182);
+}
