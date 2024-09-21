@@ -11,7 +11,7 @@ To host this bot yourself, you'll need the following:
 
 - Python 3.8+
 - `pycord` (Discord API wrapper)
-- My database (download from the [releases page]())
+- My database (download from the [releases page](https://github.com/Darkened12/trinity-bot/releases/tag/database))
 - PostgreSQL (or your preferred database management system)
 
   
