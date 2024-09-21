@@ -1,0 +1,10 @@
+py_cord==2.6.0
+aiofiles==0.6.0
+aiopg==1.1.0
+psycopg2-binary==2.8.6
+SQLAlchemy~=1.4.2
+aiohttp~=3.7.4.post0
+psycopg2~=2.8.6
+asyncpg~=0.22.0
+fuzzywuzzy==0.18.0
+python-Levenshtein==0.25.1
