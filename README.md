@@ -2,7 +2,7 @@
 
 Trinity Bot is a Discord bot that fetches frame data about **BlazBlue Centralfiction** and **BlazBlue Cross Tag Battle**.
 
-![nine-6c](https://drive.google.com/u/0/drive-viewer/AKGpihbCbnkej4_ICbw5aZHMaOntMNXAlIKQojsYCTO9pgCWBxZFIgBEDE180kp3B3M4TeYOEJnvR-LXQvpRW1FsO5CJubyJtzNWZg=s2560)
+![nine-6c](https://i.imgur.com/yRUkNge.png)
 ## Getting Started
 
 ### Prerequisites
